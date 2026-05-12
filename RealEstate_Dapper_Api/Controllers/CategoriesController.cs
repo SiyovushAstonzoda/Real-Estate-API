@@ -15,13 +15,6 @@ public class CategoriesController : ControllerBase
         _categoryRepository = categoryRepository;
     }
 
-    [HttpGet]
-    public async Task<IActionResult> CategoryList()
-    {
-        var values = await _categoryRepository.GetAllCategoriesAsync();
-        return Ok(values);
-    }
-
     [HttpPost]
     public async Task<IActionResult> CreateCategory(CreateCategoryDto categoryDto)
     {
@@ -29,4 +22,24 @@ public class CategoriesController : ControllerBase
         return Ok("New Category has been created");
     }
 
+    [HttpGet]
+    public async Task<IActionResult> CategoryList()
+    {
+        var values = await _categoryRepository.GetAllCategoriesAsync();
+        return Ok(values);
+    }
+
+    [HttpPut]
+    public async Task<IActionResult> UpdateCategory(UpdateCategoryDto categoryDto)
+    {
+        _categoryRepository.UpdateCategory(categoryDto);
+        return Ok("Category has been updated");
+    }
+
+    [HttpDelete]
+    public async Task<IActionResult> DeleteCategory(int id)
+    {
+        _categoryRepository.DeleteCategory(id);
+        return Ok("Category with Id = " + id + " has been deleted");
+    }
 }

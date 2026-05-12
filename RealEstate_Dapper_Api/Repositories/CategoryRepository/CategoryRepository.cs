@@ -34,4 +34,28 @@ public class CategoryRepository : ICategoryRepository
             return values.ToList();
         }
     }
+
+    public async void UpdateCategory(UpdateCategoryDto categoryDto)
+    {
+        string query = "Update Category Set CategoryName=@categoryName,CategoryStatus=@categoryStatus Where CategoryID=@categoryID";
+        var parameters = new DynamicParameters();
+        parameters.Add("@categoryName", categoryDto.CategoryName);
+        parameters.Add("@categoryStatus", categoryDto.CategoryStatus);
+        parameters.Add("@categoryID", categoryDto.CategoryID);
+        using (var connection = _context.CreateConnection())
+        {
+            await connection.ExecuteAsync(query, parameters);
+        }
+    }
+
+    public async void DeleteCategory(int id)
+    {
+        string query = "Delete From Category Where CategoryID = @categoryID";
+        var parameters = new DynamicParameters();
+        parameters.Add("@categoryID", id);
+        using (var connection = _context.CreateConnection())
+        {
+            await connection.ExecuteAsync(query, parameters);
+        }
+    }
 }
