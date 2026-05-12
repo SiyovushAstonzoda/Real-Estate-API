@@ -29,6 +29,13 @@ public class CategoriesController : ControllerBase
         return Ok(values);
     }
 
+    [HttpGet("{id}")]
+    public async Task<IActionResult> CategoryById(int id)
+    {
+        var value = await _categoryRepository.GetCategoryByID(id);
+        return Ok(value);
+    }
+
     [HttpPut]
     public async Task<IActionResult> UpdateCategory(UpdateCategoryDto categoryDto)
     {
