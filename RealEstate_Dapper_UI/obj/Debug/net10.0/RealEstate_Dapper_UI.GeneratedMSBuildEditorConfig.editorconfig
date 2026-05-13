@@ -46,6 +46,26 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvUHJvZmlsZS9JbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/siyovushastonzoda/Programming/C\#/Real Estate Dapper API/RealEstate_Dapper_UI/Views/Shared/Components/_DefaultFeatureViewComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvX0RlZmF1bHRGZWF0dXJlVmlld0NvbXBvbmVudFBhcnRpYWwvRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/siyovushastonzoda/Programming/C\#/Real Estate Dapper API/RealEstate_Dapper_UI/Views/Shared/Components/_DefaultHomePageProductList/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvX0RlZmF1bHRIb21lUGFnZVByb2R1Y3RMaXN0L0RlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/siyovushastonzoda/Programming/C\#/Real Estate Dapper API/RealEstate_Dapper_UI/Views/Shared/Components/_DefaultProductListExploreCitiesComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvX0RlZmF1bHRQcm9kdWN0TGlzdEV4cGxvcmVDaXRpZXNDb21wb25lbnRQYXJ0aWFsL0RlZmF1bHQuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/siyovushastonzoda/Programming/C\#/Real Estate Dapper API/RealEstate_Dapper_UI/Views/Shared/Components/_DefaultServicesComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvX0RlZmF1bHRTZXJ2aWNlc0NvbXBvbmVudFBhcnRpYWwvRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[/Users/siyovushastonzoda/Programming/C\#/Real Estate Dapper API/RealEstate_Dapper_UI/Views/Shared/Components/_DefaultWhoWeAreComponentPartial/Default.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvX0RlZmF1bHRXaG9XZUFyZUNvbXBvbmVudFBhcnRpYWwvRGVmYXVsdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/siyovushastonzoda/Programming/C\#/Real Estate Dapper API/RealEstate_Dapper_UI/Views/Shared/Components/_HeaderViewComponentPartial/Default.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvU2hhcmVkL0NvbXBvbmVudHMvX0hlYWRlclZpZXdDb21wb25lbnRQYXJ0aWFsL0RlZmF1bHQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
