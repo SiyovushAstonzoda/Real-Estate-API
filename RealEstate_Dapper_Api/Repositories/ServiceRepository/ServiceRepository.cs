@@ -25,17 +25,6 @@ public class ServiceRepository : IServiceRepository
         }
     }
 
-    public async void DeleteService(int id)
-    {
-        string query = "Delete From Service Where ServiceID = @serviceID";
-        var parameters = new DynamicParameters();
-        parameters.Add("@serviceID", id);
-        using (var connection = _context.CreateConnection())
-        {
-            await connection.ExecuteAsync(query, parameters);
-        }
-    }
-
     public async Task<List<ResultServiceDto>> GetAllServiceAsync()
     {
         string query = "Select * from Service";
@@ -65,6 +54,17 @@ public class ServiceRepository : IServiceRepository
         parameters.Add("@name", serviceDto.Name);
         parameters.Add("@status", serviceDto.Status);
         parameters.Add("@serviceID", serviceDto.ServiceID);
+        using (var connection = _context.CreateConnection())
+        {
+            await connection.ExecuteAsync(query, parameters);
+        }
+    }
+
+    public async void DeleteService(int id)
+    {
+        string query = "Delete From Service Where ServiceID = @serviceID";
+        var parameters = new DynamicParameters();
+        parameters.Add("@serviceID", id);
         using (var connection = _context.CreateConnection())
         {
             await connection.ExecuteAsync(query, parameters);
