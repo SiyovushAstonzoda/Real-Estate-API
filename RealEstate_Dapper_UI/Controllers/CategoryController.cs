@@ -1,14 +1,29 @@
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using RealEstate_Dapper_UI.Dtos.CategoryDtos;
 
 namespace RealEstate_Dapper_UI.Controllers
 {
     public class CategoryController : Controller
     {
-        // GET: CategoryController
-        public ActionResult Index()
+        private readonly IHttpClientFactory _httpClientFactory;
+
+        public CategoryController(IHttpClientFactory httpClientFactory)
         {
-            return View();
+            _httpClientFactory = httpClientFactory;
         }
 
+        public async Task<IActionResult> Index()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("http://localhost:5048/api/Categories");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
     }
 }
