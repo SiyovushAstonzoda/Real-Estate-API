@@ -2,18 +2,18 @@ using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using RealEstate_Dapper_UI.Dtos.ProductDtos;
 
-namespace RealEstate_Dapper_UI.ViewComponents.HomePage;
+namespace RealEstate_Dapper_UI.Controllers;
 
-public class _DefaultHomePageProductList : ViewComponent
+public class ProductController : Controller
 {
     private readonly IHttpClientFactory _httpClientFactory;
 
-    public _DefaultHomePageProductList(IHttpClientFactory httpClientFactory)
+    public ProductController(IHttpClientFactory httpClientFactory)
     {
         _httpClientFactory = httpClientFactory;
     }
 
-    public async Task<IViewComponentResult> InvokeAsync()
+    public async Task<IActionResult> Index()
     {
         var client = _httpClientFactory.CreateClient();
         var responseMessage = await client.GetAsync("http://localhost:5048/api/Products/ProductListWithCategory");
@@ -25,4 +25,11 @@ public class _DefaultHomePageProductList : ViewComponent
         }
         return View();
     }
+
+    [HttpGet]
+    public async Task<IActionResult> CreateProduct()
+    {
+        return View();
+    }
+
 }
