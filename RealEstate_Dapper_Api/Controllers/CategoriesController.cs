@@ -43,7 +43,7 @@ public class CategoriesController : ControllerBase
         return Ok("Category has been updated");
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteCategory(int id)
     {
         _categoryRepository.DeleteCategory(id);
