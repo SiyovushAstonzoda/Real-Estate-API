@@ -1,6 +1,5 @@
-@model List<ResultEmployeeDto>
-
-@{
+@model List<ResultAboutDto>
+    @{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Admin/Index.cshtml";
     int counter = 0;
@@ -10,18 +9,16 @@
     <div class="row g-4">
         <div class="col-12">
             <div class="bg-light rounded h-100 p-4">
-                <h6 class="mb-4">Employee Table</h6>
+                <h6 class="mb-4">@ViewData["Title"]</h6>
                 <div class="table-responsive">
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">#</th>
-                                <th scope="col">Name</th>
                                 <th scope="col">Title</th>
-                                <th scope="col">Mail</th>
-                                <th scope="col">Phone Number</th>
-                                <th scope="col">Image Url</th>
-                                <th scope="col">Status</th>
+                                <th scope="col">Subtitle</th>
+                                <th scope="col">Description1</th>
+                                <th scope="col">Description2</th>
                                 <th scope="col">Delete</th>
                                 <th scope="col">Update</th>
                             </tr>
@@ -32,19 +29,17 @@
                                 counter++;
                                 <tr>
                                     <th scope="row">@counter</th>
-                                    <td>@item.Name</td>
                                     <td>@item.Title</td>
-                                    <td>@item.Mail</td>
-                                    <td>@item.PhoneNumber</td>
-                                    <td>@item.ImageUrl</td>
-                                    <td>@item.Status</td>
-                                    <td><a href="/Employee/DeleteEmployee/@item.EmployeeID" class="btn btn-outline-danger">Delete</a></td>
-                                    <td><a href="/Employee/UpdateEmployee/@item.EmployeeID" class="btn btn-outline-success">Update</a></td>
+                                    <td>@item.Subtitle</td>
+                                    <td>@item.Description1</td>
+                                    <td>@item.Description2</td>
+                                    <td><a href="/About/DeleteAbout/@item.AboutID" class="btn btn-outline-danger">Delete</a></td>
+                                    <td><a href="/About/UpdateAbout/@item.AboutID" class="btn btn-outline-success">Update</a></td>
                                 </tr>
                             }
                         </tbody>
                     </table>
-                    <a href="/Employee/CreateEmployee" class="btn btn-outline-info">Enter a new Employee</a>
+                    <a href="/About/CreateAbout" class="btn btn-outline-info">Enter a new About</a>
                 </div>
             </div>
         </div>

@@ -44,7 +44,7 @@ public class AboutController : ControllerBase
         return Ok("About has been updated");
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAbout(int id)
     {
         _aboutRepository.DeleteAbout(id);
