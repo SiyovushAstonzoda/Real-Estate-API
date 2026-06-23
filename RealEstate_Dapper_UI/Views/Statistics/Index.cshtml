@@ -1,0 +1,168 @@
+@{
+ViewData["Title"] = "Index";
+Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-address-book fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Active Category</p>
+                    <h6 class="mb-0">@ViewBag.ActiveCategoryCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-briefcase fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Active Employee</p>
+                    <h6 class="mb-0">@ViewBag.ActiveEmployeeCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-building fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Apartment Count</p>
+                    <h6 class="mb-0">@ViewBag.ApartmentCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-credit-card fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Average Product Price By Rent</p>
+                    <h6 class="mb-0">@ViewBag.AverageProductPriceByRent</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-university fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Average Product Price By Sale</p>
+                    <h6 class="mb-0">@ViewBag.AverageProductPriceBySale</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-bar fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Average Room Count</p>
+                    <h6 class="mb-0">@ViewBag.AverageRoomCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-chart-area fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Category Count</p>
+                    <h6 class="mb-0">@ViewBag.CategoryCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-star-half fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Category Name By Max Product Count</p>
+                    <h6 class="mb-0">@ViewBag.CategoryNameByMaxProductCount</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-star fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">City Name By Max Product Count</p>
+                    <h6 class="mb-0">@ViewBag.CityNameByMaxProductCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-users fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Different City Count</p>
+                    <h6 class="mb-0">@ViewBag.DifferentCityCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-gift fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Employee Name By Max Product Count</p>
+                    <h6 class="mb-0">@ViewBag.EmployeeNameByMaxProductCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-shopping-basket fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Last Product Price</p>
+                    <h6 class="mb-0">@ViewBag.LastProductPrice</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="row g-4">
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-home fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Newest Building Year</p>
+                    <h6 class="mb-0">@ViewBag.NewestBuildingYear</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-bed fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Oldest Building Year</p>
+                    <h6 class="mb-0">@ViewBag.OldestBuildingYear</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-user-times fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Passive Category Count</p>
+                    <h6 class="mb-0">@ViewBag.PassiveCategoryCount</h6>
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6 col-xl-3">
+            <div class="bg-light rounded d-flex align-items-center justify-content-between p-4">
+                <i class="fa fa-shopping-cart fa-3x text-primary"></i>
+                <div class="ms-3">
+                    <p class="mb-2">Product Count</p>
+                    <h6 class="mb-0">@ViewBag.ProductCount</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
