@@ -15,7 +15,9 @@ public class StatisticsRepository : IStatisticsRepository
 
     public int ActiveCategoryCount()
     {
-        string query = "Select Count(*) from Category where CategoryStatus = 1";
+        string query = @"Select Count(*) 
+                        From Category 
+                        Where CategoryStatus = 1";
         using (var connection = _context.CreateConnection())
         {
             var values = connection.QueryFirstOrDefault<int>(query);
@@ -25,7 +27,9 @@ public class StatisticsRepository : IStatisticsRepository
 
     public int ActiveEmployeeCount()
     {
-        string query = "Select Count(*) from Employee where Status = 1";
+        string query = @"Select Count(*) 
+                        From Employee 
+                        Where Status = 1";
         using (var connection = _context.CreateConnection())
         {
             var values = connection.QueryFirstOrDefault<int>(query);
@@ -35,7 +39,9 @@ public class StatisticsRepository : IStatisticsRepository
 
     public int ApartmentCount()
     {
-        string query = "Select Count(*) from Product where Title like '%Apartment%'";
+        string query = @"Select Count(*) 
+                        From Product
+                        Where Title Like '%Apartment%'";
         using (var connection = _context.CreateConnection())
         {
             var values = connection.QueryFirstOrDefault<int>(query);
@@ -45,7 +51,9 @@ public class StatisticsRepository : IStatisticsRepository
 
     public decimal AverageProductPriceByRent()
     {
-        string query = "Select Avg(Price) from Product where Type = 'Rent'";
+        string query = @"Select Avg(Price) 
+                        From Product
+                        Where Type = 'Rent'";
         using (var connection = _context.CreateConnection())
         {
             var values = connection.QueryFirstOrDefault<decimal>(query);
@@ -55,7 +63,9 @@ public class StatisticsRepository : IStatisticsRepository
 
     public decimal AverageProductPriceBySale()
     {
-        string query = "Select Avg(Price) from Product where Type = 'Sale'";
+        string query = @"Select Avg(Price) 
+                        From Product
+                        Where Type = 'Sale'";
         using (var connection = _context.CreateConnection())
         {
             var values = connection.QueryFirstOrDefault<decimal>(query);
@@ -65,7 +75,8 @@ public class StatisticsRepository : IStatisticsRepository
 
     public int AverageRoomCount()
     {
-        string query = "Select Avg(RoomCount) from ProductDetails";
+        string query = @"Select Avg(RoomCount) 
+                        From ProductDetails";
         using (var connection = _context.CreateConnection())
         {
             var values = connection.QueryFirstOrDefault<int>(query);
@@ -75,7 +86,8 @@ public class StatisticsRepository : IStatisticsRepository
 
     public int CategoryCount()
     {
-        string query = "Select Count(*) from Category";
+        string query = @"Select Count(*) 
+                        From Category";
         using (var connection = _context.CreateConnection())
         {
             var values = connection.QueryFirstOrDefault<int>(query);
@@ -99,41 +111,96 @@ public class StatisticsRepository : IStatisticsRepository
 
     public string CityNameByMaxProductCount()
     {
-        throw new NotImplementedException();
+        string query = @"Select Top(1) City
+                        From Product
+                        Group By City
+                        Order By Count(*) Desc";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<string>(query);
+            return values;
+        }
     }
 
     public int DifferentCityCount()
     {
-        throw new NotImplementedException();
+        string query = @"Select Count(Distinct(City))
+                        From Product";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<int>(query);
+            return values;
+        }
     }
 
     public string EmployeeNameByMaxProductCount()
     {
-        throw new NotImplementedException();
+        string query = @"Select Top(1) e.Name
+                        From Product p
+                        Inner Join Employee e On e.EmployeeID = p.EmployeeID
+                        Group By e.Name, p.EmployeeID
+                        Order By Count(*) Desc";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<string>(query);
+            return values;
+        }
     }
 
     public decimal LastProductPrice()
     {
-        throw new NotImplementedException();
+        string query = @"Select Top(1) Price 
+                        From Product 
+                        Order By ProductID Desc";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<decimal>(query);
+            return values;
+        }
     }
 
     public string NewestBuildingYear()
     {
-        throw new NotImplementedException();
+        string query = @"Select Max(BuildYear) 
+                        From ProductDetails";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<string>(query);
+            return values;
+        }
     }
 
     public string OldestBuildingYear()
     {
-        throw new NotImplementedException();
+        string query = @"Select Min(BuildYear) 
+                        From ProductDetails";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<string>(query);
+            return values;
+        }
     }
 
     public int PassiveCategoryCount()
     {
-        throw new NotImplementedException();
+        string query = @"Select Count(*) 
+                        From Category 
+                        Where CategoryStatus = 0";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<int>(query);
+            return values;
+        }
     }
 
     public int ProductCount()
     {
-        throw new NotImplementedException();
+        string query = @"Select Count(*)
+                        From Product";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<int>(query);
+            return values;
+        }
     }
 }
