@@ -7,8 +7,10 @@ public interface IStatisticsRepository
     int PassiveCategoryCount();
     int ProductCount();
     int ApartmentCount();
+    string CategoryNameByMaxProductCount();
     string EmployeeNameByMaxProductCount();
-    decimal AverageProductBySale();
+    decimal AverageProductPriceByRent();
+    decimal AverageProductPriceBySale();
     string CityNameByMaxProductCount();
     int DifferentCityCount();
     decimal LastProductPrice();

@@ -35,22 +35,66 @@ public class StatisticsRepository : IStatisticsRepository
 
     public int ApartmentCount()
     {
-        throw new NotImplementedException();
+        string query = "Select Count(*) from Product where Title like '%Apartment%'";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<int>(query);
+            return values;
+        }
     }
 
-    public decimal AverageProductBySale()
+    public decimal AverageProductPriceByRent()
     {
-        throw new NotImplementedException();
+        string query = "Select Avg(Price) from Product where Type = 'Rent'";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<decimal>(query);
+            return values;
+        }
+    }
+
+    public decimal AverageProductPriceBySale()
+    {
+        string query = "Select Avg(Price) from Product where Type = 'Sale'";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<decimal>(query);
+            return values;
+        }
     }
 
     public int AverageRoomCount()
     {
-        throw new NotImplementedException();
+        string query = "Select Avg(RoomCount) from ProductDetails";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<int>(query);
+            return values;
+        }
     }
 
     public int CategoryCount()
     {
-        throw new NotImplementedException();
+        string query = "Select Count(*) from Category";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<int>(query);
+            return values;
+        }
+    }
+
+    public string CategoryNameByMaxProductCount()
+    {
+        string query = @"Select Top(1) c.CategoryName 
+                        From Product p
+                        Inner Join Category c On p.ProductCategory = c.CategoryID 
+                        Group By c.CategoryName, p.ProductCategory 
+                        Order By Count(*) Desc";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = connection.QueryFirstOrDefault<string>(query);
+            return values;
+        }
     }
 
     public string CityNameByMaxProductCount()
