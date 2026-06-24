@@ -1,0 +1,22 @@
+@model CreateBottomGridDto
+@{
+ViewData["Title"] = "CreateBottomGrid";
+Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="bg-light rounded h-100 p-4">
+    <form method="post">
+        <label>Icon</label>
+        <input type="text" asp-for="Icon" class="form-control" />
+        <br />
+        <label>Title</label>
+        <input type="text" asp-for="Title" class="form-control" />
+        <br />
+        <label>Description</label>
+        <input type="text" asp-for="Description" class="form-control" />
+        <br />
+        <button class="btn btn-primary">Add BottomGrid</button>
+    </form>
+</div>

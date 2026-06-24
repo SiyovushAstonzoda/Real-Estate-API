@@ -43,7 +43,7 @@ public class BottomGridsController : ControllerBase
         return Ok("BottomGrid has been updated");
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBottomGrid(int id)
     {
         _bottomGridRepository.DeleteBottomGrid(id);
