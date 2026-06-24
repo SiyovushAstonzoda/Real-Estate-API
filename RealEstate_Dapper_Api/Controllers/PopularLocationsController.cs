@@ -43,7 +43,7 @@ public class PopularLocationsController : ControllerBase
         return Ok("PopularLocation has been updated");
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePopularLocation(int id)
     {
         _popularLocationRepository.DeletePopularLocation(id);

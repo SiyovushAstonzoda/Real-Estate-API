@@ -1,0 +1,20 @@
+@model UpdatePopularLocationDto
+@{
+    ViewData["Title"] = "UpdatePopularLocation";
+    Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="bg-light rounded h-100 p-4">
+    <form method="post">
+        <input type="hidden" asp-for="PopularLocationID" />
+        <label>CityName</label>
+        <input type="text" asp-for="CityName" class="form-control" />
+        <br />
+        <label>ImageUrl</label>
+        <input type="text" asp-for="ImageUrl" class="form-control" />
+        <br />
+        <button class="btn btn-success">Update PopularLocation</button>
+    </form>
+</div>
