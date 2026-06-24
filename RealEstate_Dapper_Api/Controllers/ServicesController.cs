@@ -43,7 +43,7 @@ public class ServicesController : ControllerBase
         return Ok("Service has been updated");
     }
 
-    [HttpDelete]
+    [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteService(int id)
     {
         _serviceRepository.DeleteService(id);

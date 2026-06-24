@@ -1,6 +1,6 @@
-namespace RealEstate_Dapper_UI.Dtos.AboutDtos;
+namespace RealEstate_Dapper_UI.Dtos.ServiceDtos;
 
-public class ResultServiceDto
+public class GetByIDServiceDto
 {
     public int ServiceID { get; set; }
     public string Name { get; set; }
