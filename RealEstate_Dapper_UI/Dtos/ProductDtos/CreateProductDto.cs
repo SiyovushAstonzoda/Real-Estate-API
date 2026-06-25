@@ -10,4 +10,5 @@ public class CreateProductDto
     public string Address { get; set; }
     public string Type { get; set; }
     public string CategoryID { get; set; }
+    public bool DealOfTheDay { get; set; }
 }

@@ -1,0 +1,38 @@
+@model UpdateProductDto
+@{
+ViewData["Title"] = "UpdateProduct";
+Layout = "~/Views/Admin/Index.cshtml";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="bg-light rounded h-100 p-4">
+    <form method="post">
+        <input type="hidden" asp-for="ProductID" />
+        <label>Title</label>
+        <input type="text" asp-for="Title" class="form-control" />
+        <br />
+        <label>Price</label>
+        <input type="text" asp-for="Price" class="form-control" />
+        <br />
+        <label>Cover Image</label>
+        <input type="text" asp-for="CoverImage" class="form-control" />
+        <br />
+        <label>City</label>
+        <input type="text" asp-for="City" class="form-control" />
+        <br />
+        <label>District</label>
+        <input type="text" asp-for="District" class="form-control" />
+        <br />
+        <label>Address</label>
+        <textarea asp-for="Address" class="form-control" rows="5"></textarea>
+        <br />
+        <label>Type</label>
+        <input type="text" asp-for="Type" class="form-control" />
+        <br />
+        <label>Category Name</label>
+        @Html.DropDownListFor(x=>x.CategoryID, (List<SelectListItem>)ViewBag.v, new {@class="form-control"})
+        <br />
+        <button class="btn btn-success">Update Product</button>
+    </form>
+</div>
