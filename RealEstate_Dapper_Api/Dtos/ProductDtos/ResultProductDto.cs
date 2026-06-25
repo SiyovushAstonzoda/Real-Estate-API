@@ -13,4 +13,5 @@ public class ResultProductDto
     public string Type { get; set; }
     public int ProductCategory { get; set; }
     // public int EmployeeID { get; set; }
+    public bool DealOfTheDay { get; set; }
 }

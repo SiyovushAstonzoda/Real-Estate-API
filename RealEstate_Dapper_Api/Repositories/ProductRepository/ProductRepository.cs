@@ -34,4 +34,31 @@ public class ProductRepository : IProductRepository
             return values.ToList();
         }
     }
+
+    public async Task ActivateDealOfTheDay(int id)
+    {
+        string query = @"Update Product 
+                        Set DealOfTheDay = 1
+                        Where ProductID=@productID";
+        var parameters = new DynamicParameters();
+        parameters.Add("@productID", id);
+        using (var connection = _context.CreateConnection())
+        {
+            await connection.ExecuteAsync(query, parameters);
+        }
+    }
+
+    public async Task DeactivateDealOfTheDay(int id)
+    {
+        string query = @"Update Product 
+                        Set DealOfTheDay = 0
+                        Where ProductID=@productID";
+        var parameters = new DynamicParameters();
+        parameters.Add("@productID", id);
+        using (var connection = _context.CreateConnection())
+        {
+            await connection.ExecuteAsync(query, parameters);
+        }
+    }
+
 }

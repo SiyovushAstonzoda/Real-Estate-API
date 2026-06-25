@@ -27,4 +27,18 @@ public class ProductsController : ControllerBase
         var values = await _productRepository.GetAllProductWithCategoryAsync();
         return Ok(values);
     }
+
+    [HttpPut("ActivateDealOfTheDay/{id}")]
+    public async Task<IActionResult> ActivateDealOfTheDay(int id)
+    {
+        await _productRepository.ActivateDealOfTheDay(id);
+        return Ok($"The 'Deal of the Day' status for product ID {id} was successfully activated.");
+    }
+
+    [HttpPut("DeactivateDealOfTheDay/{id}")]
+    public async Task<IActionResult> DeactivateDealOfTheDay(int id)
+    {
+        await _productRepository.DeactivateDealOfTheDay(id);
+        return Ok($"The 'Deal of the Day' status for product ID {id} was successfully deactivated.");
+    }
 }
