@@ -48,4 +48,32 @@ public class ProductController : Controller
         return View();
     }
 
+    [HttpGet]
+    public async Task<IActionResult> ActivateDealOfTheDay(int id)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var responseMessage = await client.PutAsync($"http://localhost:5048/api/Products/ActivateDealOfTheDay/{id}", null);
+
+        if (responseMessage.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Index");
+        }
+
+        return View();
+    }
+
+
+    [HttpGet]
+    public async Task<IActionResult> DeactivateDealOfTheDay(int id)
+    {
+        var client = _httpClientFactory.CreateClient();
+        var responseMessage = await client.PutAsync($"http://localhost:5048/api/Products/DeactivateDealOfTheDay/{id}", null);
+
+        if (responseMessage.IsSuccessStatusCode)
+        {
+            return RedirectToAction("Index");
+        }
+
+        return View();
+    }
 }
