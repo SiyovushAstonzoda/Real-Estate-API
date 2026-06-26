@@ -61,4 +61,17 @@ public class ProductRepository : IProductRepository
         }
     }
 
+    public async Task<List<ResultLastProductsWithCategoryDto>> GetLastRentedProductsWithCategory()
+    {
+        string query = @"Select Top(5) p.ProductID, p.Title, p.Price, p.City, p.District, c.CategoryName, p.AnnouncementDate
+                        From Product p
+                        Inner Join Category c On p.ProductCategory = c.CategoryID
+                        Where Type = 'Rent'
+                        Order By p.ProductID Desc";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = await connection.QueryAsync<ResultLastProductsWithCategoryDto>(query);
+            return values.ToList();
+        }
+    }
 }

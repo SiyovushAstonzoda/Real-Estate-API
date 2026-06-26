@@ -8,4 +8,5 @@ public interface IProductRepository
     Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync();
     Task ActivateDealOfTheDay(int id);
     Task DeactivateDealOfTheDay(int id);
+    Task<List<ResultLastProductsWithCategoryDto>> GetLastRentedProductsWithCategory();
 }

@@ -41,4 +41,11 @@ public class ProductsController : ControllerBase
         await _productRepository.DeactivateDealOfTheDay(id);
         return Ok($"The 'Deal of the Day' status for product ID {id} was successfully deactivated.");
     }
+
+    [HttpGet("GetLastRentedProductsWithCategory")]
+    public async Task<IActionResult> GetLastRentedProductsWithCategory()
+    {
+        var values = await _productRepository.GetLastRentedProductsWithCategory();
+        return Ok(values);
+    }
 }

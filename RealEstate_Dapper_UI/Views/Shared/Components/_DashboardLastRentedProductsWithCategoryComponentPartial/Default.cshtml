@@ -1,0 +1,46 @@
+@model List<ResultLastProductsWithCategoryDto>
+    @{
+    ViewData["Title"] = "Default";
+    int counter = 0;
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<div class="container-fluid pt-4 px-4">
+    <div class="bg-light text-center rounded p-4">
+        <div class="d-flex align-items-center justify-content-between mb-4">
+            <h6 class="mb-0">Last 5 Rented Products</h6>
+            <a href="/Product/Index">Show All Products</a>
+        </div>
+        <div class="table-responsive">
+            <table class="table text-start align-middle table-bordered table-hover mb-0">
+                <thead>
+                    <tr class="text-dark">
+                        <th scope="col">#</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Title</th>
+                        <th scope="col">City-District</th>
+                        <th scope="col">Category</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">See the Product</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach(var item in Model)
+                    {
+                        counter++;
+                        <tr>
+                            <td>@counter</td>
+                            <td>@(((DateTime)item.AnnouncementDate).ToString("dd-MMM-yyyy"))</td>
+                            <td>@item.Title</td>
+                            <td>@item.City-@item.District</td>
+                            <td>@item.CategoryName</td>
+                            <td>@item.Price</td>
+                            <td><a class="btn btn-sm btn-primary" href="/Product/Index">See the Product</a></td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
