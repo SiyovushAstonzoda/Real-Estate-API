@@ -74,4 +74,19 @@ public class ProductRepository : IProductRepository
             return values.ToList();
         }
     }
+
+    public async Task<List<ResultProductAdsListWithCategoryByEmployeeDto>> GetProductAdsListByEmployee(int id)
+    {
+        string query = @"Select ProductID, Title, Price, CoverImage, City, District, Address, Type, CategoryName, DealOfTheDay
+                        From Product 
+                        Inner Join Category On Product.ProductCategory=Category.CategoryID
+                        Where EmployeeID = @employeeID";
+        var parameters = new DynamicParameters();
+        parameters.Add("@employeeID", id);
+        using (var connection = _context.CreateConnection())
+        {
+            var values = await connection.QueryAsync<ResultProductAdsListWithCategoryByEmployeeDto>(query, parameters);
+            return values.ToList();
+        }
+    }
 }

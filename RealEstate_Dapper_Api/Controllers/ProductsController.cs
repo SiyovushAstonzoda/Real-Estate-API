@@ -48,4 +48,11 @@ public class ProductsController : ControllerBase
         var values = await _productRepository.GetLastRentedProductsWithCategory();
         return Ok(values);
     }
+
+    [HttpGet("GetProductAdsListByEmployee")]
+    public async Task<IActionResult> GetProductAdsListByEmployee(int id)
+    {
+        var values = await _productRepository.GetProductAdsListByEmployee(id);
+        return Ok(values);
+    }
 }
