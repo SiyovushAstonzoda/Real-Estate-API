@@ -13,7 +13,7 @@ public class _DashboardStatisticsComponentPartial : ViewComponent
 
     public async Task<IViewComponentResult> InvokeAsync()
     {
-        #region Statistics - Product Count
+        #region Statistics1 - Product Count
         var client1 = _httpClientFactory.CreateClient();
         var responseMessage1 = await client1.GetAsync("http://localhost:5048/api/Statistics/ProductCount");
         var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
