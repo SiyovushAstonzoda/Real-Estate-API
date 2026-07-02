@@ -11,6 +11,6 @@ public class LoginService : ILoginService
         _contextAccessor = contextAccessor;
     }
 
-    public string GetUserID => _contextAccessor.HttpContext.User.FindFirst(ClaimTypes.NameIdentifier).Value;
+    public string GetUserID => _contextAccessor.HttpContext?.User?.FindFirst(ClaimTypes.NameIdentifier)?.Value;
 
 }

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.5.0"></script>
+<body>
+
+<canvas id="myChart" style="width:80%;max-width:400px"></canvas>
+
+<script>
+const xValues = ["Istanbul", "France", "Spain", "USA", "Varzob"];
+const yValues = [55, 49, 44, 24, 15];
+const barColors = ["rgb(106, 212, 221)", "rgb(127, 199, 217)", "rgb(54, 84, 134)", "rgb(134, 182, 246)", "rgb(0, 141, 218)"];
+const ctx = document.getElementById('myChart');
+
+new Chart(ctx, {
+  type: "bar",
+  data: {
+    labels: xValues,
+    datasets: [{
+      backgroundColor: barColors,
+      data: yValues
+    }]
+  },
+  options: {
+    plugins: {
+      legend: {display: false},
+      title: {
+        display: true,
+        text: "City - Ad Statistics",
+        font: {size: 16}
+      }
+    }
+  }
+});
+</script>
+
+</body>
+</html>
