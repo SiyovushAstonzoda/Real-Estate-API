@@ -75,18 +75,58 @@ public class ProductRepository : IProductRepository
         }
     }
 
-    public async Task<List<ResultProductAdsListWithCategoryByEmployeeDto>> GetProductAdsListByEmployee(int id)
+    public async Task<List<ResultProductAdsListWithCategoryByEmployeeDto>> GetProductAdsListByEmployeeByTrue(int id)
     {
         string query = @"Select ProductID, Title, Price, CoverImage, City, District, Address, Type, CategoryName, DealOfTheDay
                         From Product 
                         Inner Join Category On Product.ProductCategory=Category.CategoryID
-                        Where EmployeeID = @employeeID";
+                        Where EmployeeID = @employeeID And Status = 1";
         var parameters = new DynamicParameters();
         parameters.Add("@employeeID", id);
         using (var connection = _context.CreateConnection())
         {
             var values = await connection.QueryAsync<ResultProductAdsListWithCategoryByEmployeeDto>(query, parameters);
             return values.ToList();
+        }
+    }
+
+    public async Task<List<ResultProductAdsListWithCategoryByEmployeeDto>> GetProductAdsListByEmployeeByFalse(int id)
+    {
+        string query = @"Select ProductID, Title, Price, CoverImage, City, District, Address, Type, CategoryName, DealOfTheDay
+                        From Product 
+                        Inner Join Category On Product.ProductCategory=Category.CategoryID
+                        Where EmployeeID = @employeeID And Status = 0";
+        var parameters = new DynamicParameters();
+        parameters.Add("@employeeID", id);
+        using (var connection = _context.CreateConnection())
+        {
+            var values = await connection.QueryAsync<ResultProductAdsListWithCategoryByEmployeeDto>(query, parameters);
+            return values.ToList();
+        }
+    }
+
+    public async Task CreateProduct(CreateProductDto productDto)
+    {
+        string query = @"Insert Into Product (Title, Price, CoverImage, City, District, Address, Description, ProductCategory, EmployeeID, Type, DealOfTheDay, AnnouncementDate, Status) 
+                 Values (@title, @price, @coverImage, @city, @district, @address, @description, @productCategory, @employeeID, @type, @dealOfTheDay, @announcementDate, @status)";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("@title", productDto.Title);
+        parameters.Add("@price", productDto.Price);
+        parameters.Add("@coverImage", productDto.CoverImage);
+        parameters.Add("@city", productDto.City);
+        parameters.Add("@district", productDto.District);
+        parameters.Add("@address", productDto.Address);
+        parameters.Add("@description", productDto.Description);
+        parameters.Add("@productCategory", productDto.ProductCategory);
+        parameters.Add("@employeeID", productDto.EmployeeID);
+        parameters.Add("@type", productDto.Type);
+        parameters.Add("@dealOfTheDay", productDto.DealOfTheDay);
+        parameters.Add("@announcementDate", productDto.AnnouncementDate);
+        parameters.Add("@status", productDto.Status);
+        using (var connection = _context.CreateConnection())
+        {
+            await connection.ExecuteAsync(query, parameters);
         }
     }
 }

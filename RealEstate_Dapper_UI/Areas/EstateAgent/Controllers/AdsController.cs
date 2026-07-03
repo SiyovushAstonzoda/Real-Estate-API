@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
+using RealEstate_Dapper_UI.Dtos.CategoryDtos;
 using RealEstate_Dapper_UI.Dtos.ProductDtos;
 using RealEstate_Dapper_UI.Services;
 
@@ -17,17 +19,57 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
             _loginService = loginService;
         }
 
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> ActiveAds()
         {
             var id = _loginService.GetUserID;
             var client = _httpClientFactory.CreateClient();
-            var responseMessage = await client.GetAsync($"http://localhost:5048/api/Products/GetProductAdsListByEmployee?id={id}");
+            var responseMessage = await client.GetAsync($"http://localhost:5048/api/Products/GetProductAdsListByEmployeeByTrue?id={id}");
             if (responseMessage.IsSuccessStatusCode)
             {
                 var jsonData = await responseMessage.Content.ReadAsStringAsync();
                 var values = JsonConvert.DeserializeObject<List<ResultProductAdsListWithCategoryByEmployeeDto>>(jsonData);
                 return View(values);
             }
+            return View();
+        }
+
+        public async Task<IActionResult> PassiveAds()
+        {
+            var id = _loginService.GetUserID;
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync($"http://localhost:5048/api/Products/GetProductAdsListByEmployeeByFalse?id={id}");
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                var jsonData = await responseMessage.Content.ReadAsStringAsync();
+                var values = JsonConvert.DeserializeObject<List<ResultProductAdsListWithCategoryByEmployeeDto>>(jsonData);
+                return View(values);
+            }
+            return View();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> CreateAd()
+        {
+            var client = _httpClientFactory.CreateClient();
+            var responseMessage = await client.GetAsync("http://localhost:5048/api/Categories");
+
+            var jsonData = await responseMessage.Content.ReadAsStringAsync();
+            var values = JsonConvert.DeserializeObject<List<ResultCategoryDto>>(jsonData);
+
+            List<SelectListItem> categoryValues = (from x in values.ToList()
+                                                   select new SelectListItem
+                                                   {
+                                                       Text = x.CategoryName,
+                                                       Value = x.CategoryID.ToString()
+                                                   }).ToList();
+            ViewBag.v = categoryValues;
+
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CreateAd(string k)
+        {
             return View();
         }
     }
