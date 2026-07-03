@@ -15,8 +15,10 @@ public class MessageRepository : IMessageRepository
 
     public async Task<List<ResultInBoxMessageDto>> GetInBoxLastMessagesListByReceiver(int id)
     {
-        string query = @"Select Top(3) * 
-                        From Message Where Receiver=@receiverID
+        string query = @"Select Top(3) MessageID, Name, Subject, Detail, SendDate, IsRead, ImageUrl
+                        From Message 
+                        Inner Join AppUser On UserID = Sender
+                        Where Receiver=@receiverID
                         Order By MessageID Desc";
         var parameters = new DynamicParameters();
         parameters.Add("@receiverID", id);
