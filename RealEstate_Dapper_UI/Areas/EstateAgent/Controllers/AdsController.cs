@@ -1,3 +1,4 @@
+using System.Text;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Newtonsoft.Json;
@@ -68,8 +69,23 @@ namespace RealEstate_Dapper_UI.Areas.EstateAgent.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> CreateAd(string k)
+        public async Task<IActionResult> CreateAd(CreateProductDto createProductDto)
         {
+            createProductDto.DealOfTheDay = false;
+            createProductDto.AnnouncementDate = DateTime.Now;
+            createProductDto.Status = true;
+
+            var id = _loginService.GetUserID;
+            createProductDto.EmployeeID = int.Parse(id);
+
+            var client = _httpClientFactory.CreateClient();
+            var jsonData = JsonConvert.SerializeObject(createProductDto);
+            StringContent stringContent = new StringContent(jsonData, Encoding.UTF8, "application/json");
+            var responseMessage = await client.PostAsync("http://localhost:5048/api/Products", stringContent);
+            if (responseMessage.IsSuccessStatusCode)
+            {
+                return RedirectToAction("Index");
+            }
             return View();
         }
     }

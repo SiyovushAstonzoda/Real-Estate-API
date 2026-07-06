@@ -8,7 +8,12 @@ public class CreateProductDto
     public string City { get; set; }
     public string District { get; set; }
     public string Address { get; set; }
+    public string Description { get; set; }
     public string Type { get; set; }
-    public string CategoryID { get; set; }
     public bool DealOfTheDay { get; set; }
+    public DateTime AnnouncementDate { get; set; }//AdDate
+    public bool Status { get; set; }
+    //public string CategoryName { get; set; }
+    public int ProductCategory { get; set; }
+    public int EmployeeID { get; set; }
 }

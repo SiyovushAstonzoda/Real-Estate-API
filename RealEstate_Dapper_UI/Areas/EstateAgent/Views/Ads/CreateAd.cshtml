@@ -26,13 +26,16 @@ Layout = "~/Areas/EstateAgent/Views/LayoutEstateAgent/Index.cshtml";
             <input type="text" asp-for="District" class="form-control" />
             <br />
             <label>Address</label>
-            <textarea asp-for="Address" class="form-control" rows="5"></textarea>
+            <textarea asp-for="Address" class="form-control" rows="3"></textarea>
+            <br />
+            <label>Description</label>
+            <textarea asp-for="Description" class="form-control" rows="5"></textarea>
+            <br />
+            <label>Category Name</label>
+            @Html.DropDownListFor(x => x.ProductCategory, (List<SelectListItem>)ViewBag.v, new { @class = "form-control" })
             <br />
             <label>Type</label>
             <input type="text" asp-for="Type" class="form-control" />
-            <br />
-            <label>Category Name</label>
-            @Html.DropDownListFor(x=>x.CategoryID, (List<SelectListItem>)ViewBag.v, new {@class="form-control"})
             <br />
             <button class="btn btn-primary">Add Product</button>
         </form>
