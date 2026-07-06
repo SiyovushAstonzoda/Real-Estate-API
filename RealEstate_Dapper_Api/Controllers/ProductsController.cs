@@ -70,4 +70,11 @@ public class ProductsController : ControllerBase
         await _productRepository.CreateProduct(productDto);
         return Ok("New Product has been created successfully");
     }
+
+    [HttpGet("GetProductByID")]
+    public async Task<IActionResult> GetProductByID(int id)
+    {
+        var values = await _productRepository.GetProductByID(id);
+        return Ok(values);
+    }
 }

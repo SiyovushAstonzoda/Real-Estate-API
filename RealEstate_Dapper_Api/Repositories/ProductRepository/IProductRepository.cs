@@ -1,3 +1,4 @@
+using RealEstate_Dapper_Api.Dtos.ProductDetailsDtos;
 using RealEstate_Dapper_Api.Dtos.ProductDtos;
 
 namespace RealEstate_Dapper_Api.Repositories.ProductRepository;
@@ -12,4 +13,6 @@ public interface IProductRepository
     Task<List<ResultProductAdsListWithCategoryByEmployeeDto>> GetProductAdsListByEmployeeByTrue(int id);
     Task<List<ResultProductAdsListWithCategoryByEmployeeDto>> GetProductAdsListByEmployeeByFalse(int id);
     Task CreateProduct(CreateProductDto createProductDto);
+    Task<GetProductByIDDto> GetProductByID(int id);
+    Task<GetProductDetailsByIDDto> GetProductDetailsByID(int id);
 }

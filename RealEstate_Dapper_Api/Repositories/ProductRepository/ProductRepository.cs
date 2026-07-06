@@ -1,4 +1,5 @@
 using Dapper;
+using RealEstate_Dapper_Api.Dtos.ProductDetailsDtos;
 using RealEstate_Dapper_Api.Dtos.ProductDtos;
 using RealEstate_Dapper_Api.Models.DapperContext;
 
@@ -127,6 +128,37 @@ public class ProductRepository : IProductRepository
         using (var connection = _context.CreateConnection())
         {
             await connection.ExecuteAsync(query, parameters);
+        }
+    }
+
+    public async Task<GetProductByIDDto> GetProductByID(int id)
+    {
+        string query = @"Select ProductID, Title, Price, CoverImage, City, District, Address, Type, CategoryName, DealOfTheDay, AnnouncementDate
+                        From Product 
+                        Inner Join Category On Product.ProductCategory=Category.CategoryID
+                        Where ProductID = @productID";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("@productID", id);
+        using (var connection = _context.CreateConnection())
+        {
+            var values = await connection.QueryAsync<GetProductByIDDto>(query, parameters);
+            return values.FirstOrDefault();
+        }
+    }
+
+    public async Task<GetProductDetailsByIDDto> GetProductDetailsByID(int id)
+    {
+        string query = @"Select *
+                        From ProductDetails
+                        Where ProductID = @productID";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("@productID", id);
+        using (var connection = _context.CreateConnection())
+        {
+            var values = await connection.QueryAsync<GetProductDetailsByIDDto>(query, parameters);
+            return values.FirstOrDefault();
         }
     }
 }
