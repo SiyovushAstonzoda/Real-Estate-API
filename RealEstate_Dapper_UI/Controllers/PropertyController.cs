@@ -45,10 +45,18 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.Address = values1.Address;
             ViewBag.Type = values1.Type;
             ViewBag.AnnouncementDate = ((DateTime.Now.Year - values1.AnnouncementDate.Year) * 12) + DateTime.Now.Month - values1.AnnouncementDate.Month;
+            ViewBag.PostedOn = (((DateTime)values1.AnnouncementDate).ToString("dd-MMM-yyyy"));
+            ViewBag.Description = values1.Description;
 
-            ViewBag.BathCount = values2.BathCount;
-            ViewBag.BedRoomCount = values2.BedRoomCount;
+            ViewBag.ProductDetailID = values2.ProductDetailID;
             ViewBag.ProductSize = values2.ProductSize;
+            ViewBag.RoomCount = values2.RoomCount;
+            ViewBag.BedRoomCount = values2.BedRoomCount;
+            ViewBag.BathCount = values2.BathCount;
+            ViewBag.GarageSize = values2.GarageSize;
+            ViewBag.Price = values2.Price;
+            ViewBag.BuildYear = values2.BuildYear;
+
             return View();
         }
     }
