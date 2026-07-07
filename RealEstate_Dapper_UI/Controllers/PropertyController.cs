@@ -56,6 +56,8 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.GarageSize = values2.GarageSize;
             ViewBag.Price = values2.Price;
             ViewBag.BuildYear = values2.BuildYear;
+            ViewBag.Location = values2.Location;
+            ViewBag.VideoUrl = values2.VideoUrl;
 
             return View();
         }
