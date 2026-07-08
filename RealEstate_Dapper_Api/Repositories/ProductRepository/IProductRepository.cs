@@ -15,4 +15,5 @@ public interface IProductRepository
     Task CreateProduct(CreateProductDto createProductDto);
     Task<GetProductByIDDto> GetProductByID(int id);
     Task<GetProductDetailsByIDDto> GetProductDetailsByID(int id);
+    Task<List<ResultProductWithSearchListDto>> GetProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city);
 }

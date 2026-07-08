@@ -161,4 +161,22 @@ public class ProductRepository : IProductRepository
             return values.FirstOrDefault();
         }
     }
+
+    public async Task<List<ResultProductWithSearchListDto>> GetProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city)
+    {
+        string query = @"SELECT * FROM Product 
+                        WHERE Title LIKE @searchKeyValue 
+                        AND ProductCategory = @propertyCategoryId 
+                        AND City = @city";
+
+        var parameters = new DynamicParameters();
+        parameters.Add("@searchKeyValue", $"%{searchKeyValue}%");
+        parameters.Add("@propertyCategoryId", propertyCategoryId);
+        parameters.Add("@city", city);
+        using (var connection = _context.CreateConnection())
+        {
+            var values = await connection.QueryAsync<ResultProductWithSearchListDto>(query, parameters);
+            return values.ToList();
+        }
+    }
 }
