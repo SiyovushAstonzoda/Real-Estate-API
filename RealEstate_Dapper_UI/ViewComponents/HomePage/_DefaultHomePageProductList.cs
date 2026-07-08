@@ -16,7 +16,7 @@ public class _DefaultHomePageProductList : ViewComponent
     public async Task<IViewComponentResult> InvokeAsync()
     {
         var client = _httpClientFactory.CreateClient();
-        var responseMessage = await client.GetAsync("http://localhost:5048/api/Products/ProductListWithCategory");
+        var responseMessage = await client.GetAsync("http://localhost:5048/api/Products/GetProductsByActiveDealOfTheDay");
         if (responseMessage.IsSuccessStatusCode)
         {
             var jsonData = await responseMessage.Content.ReadAsStringAsync();

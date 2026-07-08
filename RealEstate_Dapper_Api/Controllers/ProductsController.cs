@@ -84,4 +84,11 @@ public class ProductsController : ControllerBase
         var values = await _productRepository.GetProductWithSearchList(searchKeyValue, propertyCategoryId, city);
         return Ok(values);
     }
+
+    [HttpGet("GetProductsByActiveDealOfTheDay")]
+    public async Task<IActionResult> GetProductsByActiveDealOfTheDay()
+    {
+        var values = await _productRepository.GetProductsByActiveDealOfTheDay();
+        return Ok(values);
+    }
 }

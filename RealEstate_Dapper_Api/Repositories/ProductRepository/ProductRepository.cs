@@ -179,4 +179,17 @@ public class ProductRepository : IProductRepository
             return values.ToList();
         }
     }
+
+    public async Task<List<ResultProductWithCategoryDto>> GetProductsByActiveDealOfTheDay()
+    {
+        string query = @"Select ProductID, Title, Price, CoverImage, City, District, Address, Type, CategoryName, DealOfTheDay
+                        From Product 
+                        Inner Join Category On Product.ProductCategory=Category.CategoryID
+                        Where DealOfTheDay = 1";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = await connection.QueryAsync<ResultProductWithCategoryDto>(query);
+            return values.ToList();
+        }
+    }
 }

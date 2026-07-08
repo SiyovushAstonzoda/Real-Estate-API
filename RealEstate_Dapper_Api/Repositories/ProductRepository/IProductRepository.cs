@@ -16,4 +16,5 @@ public interface IProductRepository
     Task<GetProductByIDDto> GetProductByID(int id);
     Task<GetProductDetailsByIDDto> GetProductDetailsByID(int id);
     Task<List<ResultProductWithSearchListDto>> GetProductWithSearchList(string searchKeyValue, int propertyCategoryId, string city);
+    Task<List<ResultProductWithCategoryDto>> GetProductsByActiveDealOfTheDay();
 }
