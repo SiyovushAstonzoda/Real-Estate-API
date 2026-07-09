@@ -91,4 +91,11 @@ public class ProductsController : ControllerBase
         var values = await _productRepository.GetProductsByActiveDealOfTheDay();
         return Ok(values);
     }
+
+    [HttpGet("GetLast3ProductsWithCategory")]
+    public async Task<IActionResult> GetLast3ProductsWithCategory()
+    {
+        var values = await _productRepository.GetLast3ProductsWithCategory();
+        return Ok(values);
+    }
 }

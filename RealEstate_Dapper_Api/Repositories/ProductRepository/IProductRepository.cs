@@ -10,6 +10,7 @@ public interface IProductRepository
     Task ActivateDealOfTheDay(int id);
     Task DeactivateDealOfTheDay(int id);
     Task<List<ResultLastProductsWithCategoryDto>> GetLastRentedProductsWithCategory();
+    Task<List<ResultLast3ProductsWithCategory>> GetLast3ProductsWithCategory();
     Task<List<ResultProductAdsListWithCategoryByEmployeeDto>> GetProductAdsListByEmployeeByTrue(int id);
     Task<List<ResultProductAdsListWithCategoryByEmployeeDto>> GetProductAdsListByEmployeeByFalse(int id);
     Task CreateProduct(CreateProductDto createProductDto);

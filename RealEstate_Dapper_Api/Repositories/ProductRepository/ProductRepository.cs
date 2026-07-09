@@ -192,4 +192,17 @@ public class ProductRepository : IProductRepository
             return values.ToList();
         }
     }
+
+    public async Task<List<ResultLast3ProductsWithCategory>> GetLast3ProductsWithCategory()
+    {
+        string query = @"Select Top(3) p.ProductID, p.Title, p.CoverImage, p.Description, c.CategoryName, p.AnnouncementDate
+                        From Product p
+                        Inner Join Category c On p.ProductCategory = c.CategoryID
+                        Order By p.ProductID Desc";
+        using (var connection = _context.CreateConnection())
+        {
+            var values = await connection.QueryAsync<ResultLast3ProductsWithCategory>(query);
+            return values.ToList();
+        }
+    }
 }
