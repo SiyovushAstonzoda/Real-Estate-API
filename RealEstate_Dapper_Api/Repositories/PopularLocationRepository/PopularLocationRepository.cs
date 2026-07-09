@@ -15,10 +15,11 @@ public class PopularLocationRepository : IPopularLocationRepository
 
     public async void CreatePopularLocation(CreatePopularLocationDto popularLocationDto)
     {
-        string query = "Insert into PopularLocation (CityName, ImageUrl) values (@cityName, @imageUrl)";
+        string query = "Insert into PopularLocation (CityName, ImageUrl, PropertyCount) values (@cityName, @imageUrl, @propertyCount)";
         var parameters = new DynamicParameters();
         parameters.Add("@cityName", popularLocationDto.CityName);
         parameters.Add("@imageUrl", popularLocationDto.ImageUrl);
+        parameters.Add("@propertyCount", popularLocationDto.PropertyCount);
         using (var connection = _context.CreateConnection())
         {
             await connection.ExecuteAsync(query, parameters);
@@ -49,10 +50,11 @@ public class PopularLocationRepository : IPopularLocationRepository
 
     public async void UpdatePopularLocation(UpdatePopularLocationDto popularLocationDto)
     {
-        string query = "Update PopularLocation Set CityName=@cityName,ImageUrl=@imageUrl Where PopularLocationID=@popularLocationID";
+        string query = "Update PopularLocation Set CityName=@cityName,ImageUrl=@imageUrl,PropertyCount=@propertyCount Where PopularLocationID=@popularLocationID";
         var parameters = new DynamicParameters();
         parameters.Add("@cityName", popularLocationDto.CityName);
         parameters.Add("@imageUrl", popularLocationDto.ImageUrl);
+        parameters.Add("@propertyCount", popularLocationDto.PropertyCount);
         parameters.Add("@popularLocationID", popularLocationDto.PopularLocationID);
         using (var connection = _context.CreateConnection())
         {
