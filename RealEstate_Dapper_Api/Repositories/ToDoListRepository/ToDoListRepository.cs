@@ -13,7 +13,7 @@ public class ToDoListRepository : IToDoListRepository
         _context = context;
     }
 
-    public async void CreateToDoList(CreateToDoListDto toDoListDto)
+    public async Task CreateToDoList(CreateToDoListDto toDoListDto)
     {
         string query = @"Insert Into ToDoList (Description, Status)
                         Values (@description, @status)";
@@ -26,7 +26,7 @@ public class ToDoListRepository : IToDoListRepository
         }
     }
 
-    public async Task<List<ResultToDoListDto>> GetAllToDoListsAsync()
+    public async Task<List<ResultToDoListDto>> GetAllToDoLists()
     {
         string query = @"Select *
                         From ToDoList";
@@ -51,7 +51,7 @@ public class ToDoListRepository : IToDoListRepository
         }
     }
 
-    public async void UpdateToDoList(UpdateToDoListDto toDoListDto)
+    public async Task UpdateToDoList(UpdateToDoListDto toDoListDto)
     {
         string query = @"Update ToDoList 
                         Set Description=@description,Status=@status
@@ -66,7 +66,7 @@ public class ToDoListRepository : IToDoListRepository
         }
     }
 
-    public async void DeleteToDoList(int id)
+    public async Task DeleteToDoList(int id)
     {
         string query = @"Delete From ToDoList
                         Where ToDoListID = @toDoListID";

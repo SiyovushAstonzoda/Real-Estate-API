@@ -13,7 +13,7 @@ public class PopularLocationRepository : IPopularLocationRepository
         _context = context;
     }
 
-    public async void CreatePopularLocation(CreatePopularLocationDto popularLocationDto)
+    public async Task CreatePopularLocation(CreatePopularLocationDto popularLocationDto)
     {
         string query = "Insert into PopularLocation (CityName, ImageUrl, PropertyCount) values (@cityName, @imageUrl, @propertyCount)";
         var parameters = new DynamicParameters();
@@ -26,7 +26,7 @@ public class PopularLocationRepository : IPopularLocationRepository
         }
     }
 
-    public async Task<List<ResultPopularLocationDto>> GetAllPopularLocationAsync()
+    public async Task<List<ResultPopularLocationDto>> GetAllPopularLocation()
     {
         string query = "Select * from PopularLocation";
         using (var connection = _context.CreateConnection())
@@ -48,7 +48,7 @@ public class PopularLocationRepository : IPopularLocationRepository
         }
     }
 
-    public async void UpdatePopularLocation(UpdatePopularLocationDto popularLocationDto)
+    public async Task UpdatePopularLocation(UpdatePopularLocationDto popularLocationDto)
     {
         string query = "Update PopularLocation Set CityName=@cityName,ImageUrl=@imageUrl,PropertyCount=@propertyCount Where PopularLocationID=@popularLocationID";
         var parameters = new DynamicParameters();
@@ -62,7 +62,7 @@ public class PopularLocationRepository : IPopularLocationRepository
         }
     }
 
-    public async void DeletePopularLocation(int id)
+    public async Task DeletePopularLocation(int id)
     {
         string query = "Delete From PopularLocation Where PopularLocationID = @popularLocationID";
         var parameters = new DynamicParameters();

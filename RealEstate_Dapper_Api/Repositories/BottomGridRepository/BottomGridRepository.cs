@@ -13,7 +13,7 @@ public class BottomGridRepository : IBottomGridRepository
         _context = context;
     }
 
-    public async void CreateBottomGrid(CreateBottomGridDto bottomGridDto)
+    public async Task CreateBottomGrid(CreateBottomGridDto bottomGridDto)
     {
         string query = "Insert into BottomGrid (Icon, Title, Description) values (@icon, @title, @description)";
         var parameters = new DynamicParameters();
@@ -26,7 +26,7 @@ public class BottomGridRepository : IBottomGridRepository
         }
     }
 
-    public async Task<List<ResultBottomGridDto>> GetAllBottomGridAsync()
+    public async Task<List<ResultBottomGridDto>> GetAllBottomGrid()
     {
         string query = "Select * from BottomGrid";
         using (var connection = _context.CreateConnection())
@@ -48,7 +48,7 @@ public class BottomGridRepository : IBottomGridRepository
         }
     }
 
-    public async void UpdateBottomGrid(UpdateBottomGridDto bottomGridDto)
+    public async Task UpdateBottomGrid(UpdateBottomGridDto bottomGridDto)
     {
         string query = "Update BottomGrid Set Icon=@icon,Title=@title,Description=@description Where BottomGridID=@bottomGridID";
         var parameters = new DynamicParameters();
@@ -62,7 +62,7 @@ public class BottomGridRepository : IBottomGridRepository
         }
     }
 
-    public async void DeleteBottomGrid(int id)
+    public async Task DeleteBottomGrid(int id)
     {
         string query = "Delete From BottomGrid Where BottomGridID = @bottomGridID";
         var parameters = new DynamicParameters();

@@ -13,7 +13,7 @@ public class EmployeeRepository : IEmployeeRepository
         _context = context;
     }
 
-    public async void CreateEmployee(CreateEmployeeDto employeeDto)
+    public async Task CreateEmployee(CreateEmployeeDto employeeDto)
     {
         string query = "insert into Employee (Name, Title, Mail, PhoneNumber, ImageUrl, Status) values (@name, @title, @mail, @phoneNumber, @imageUrl, @status)";
         var parameters = new DynamicParameters();
@@ -29,7 +29,7 @@ public class EmployeeRepository : IEmployeeRepository
         }
     }
 
-    public async Task<List<ResultEmployeeDto>> GetAllEmployeesAsync()
+    public async Task<List<ResultEmployeeDto>> GetAllEmployees()
     {
         string query = "Select * from Employee";
         using (var connection = _context.CreateConnection())
@@ -51,7 +51,7 @@ public class EmployeeRepository : IEmployeeRepository
         }
     }
 
-    public async void UpdateEmployee(UpdateEmployeeDto employeeDto)
+    public async Task UpdateEmployee(UpdateEmployeeDto employeeDto)
     {
         string query = "Update Employee Set Name=@name,Title=@title,Mail=@mail,PhoneNumber=@phoneNumber,ImageUrl=@imageUrl,Status=@status Where EmployeeID=@employeeID";
         var parameters = new DynamicParameters();
@@ -68,7 +68,7 @@ public class EmployeeRepository : IEmployeeRepository
         }
     }
 
-    public async void DeleteEmployee(int id)
+    public async Task DeleteEmployee(int id)
     {
         string query = "Delete From Employee Where EmployeeID = @employeeID";
         var parameters = new DynamicParameters();

@@ -18,14 +18,14 @@ public class ToDoListsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateToDoList(CreateToDoListDto toDoListDto)
     {
-        _toDoListRepository.CreateToDoList(toDoListDto);
+        await _toDoListRepository.CreateToDoList(toDoListDto);
         return Ok("New ToDoList has been created");
     }
 
     [HttpGet]
     public async Task<IActionResult> GetAllToDoListsAsync()
     {
-        var values = await _toDoListRepository.GetAllToDoListsAsync();
+        var values = await _toDoListRepository.GetAllToDoLists();
         return Ok(values);
     }
 
@@ -39,14 +39,14 @@ public class ToDoListsController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateToDoList(UpdateToDoListDto toDoListDto)
     {
-        _toDoListRepository.UpdateToDoList(toDoListDto);
+        await _toDoListRepository.UpdateToDoList(toDoListDto);
         return Ok("ToDoList has been updated");
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteToDoList(int id)
     {
-        _toDoListRepository.DeleteToDoList(id);
+        await _toDoListRepository.DeleteToDoList(id);
         return Ok("ToDoList with Id = " + id + " has been deleted");
     }
 }

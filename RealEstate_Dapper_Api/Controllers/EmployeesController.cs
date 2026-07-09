@@ -18,14 +18,14 @@ public class EmployeesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateEmployee(CreateEmployeeDto employeeDto)
     {
-        _employeeRepository.CreateEmployee(employeeDto);
+        await _employeeRepository.CreateEmployee(employeeDto);
         return Ok("New Employee has been created");
     }
 
     [HttpGet]
     public async Task<IActionResult> EmployeeList()
     {
-        var values = await _employeeRepository.GetAllEmployeesAsync();
+        var values = await _employeeRepository.GetAllEmployees();
         return Ok(values);
     }
 
@@ -39,14 +39,14 @@ public class EmployeesController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateEmployee(UpdateEmployeeDto employeeDto)
     {
-        _employeeRepository.UpdateEmployee(employeeDto);
+        await _employeeRepository.UpdateEmployee(employeeDto);
         return Ok("Employee has been updated");
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteEmployee(int id)
     {
-        _employeeRepository.DeleteEmployee(id);
+        await _employeeRepository.DeleteEmployee(id);
         return Ok("Employee with Id = " + id + " has been deleted");
     }
 }

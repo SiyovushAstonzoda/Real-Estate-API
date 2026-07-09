@@ -13,7 +13,7 @@ public class ContactRepository : IContactRepository
         _context = context;
     }
 
-    public async void CreateContact(CreateContactDto contactDto)
+    public async Task CreateContact(CreateContactDto contactDto)
     {
         string query = @"Insert Into Contact (Name, Subject, Email, Message, SendDate)
                         Values (@name, @subject, @email, @message, @sendDate)";
@@ -29,7 +29,7 @@ public class ContactRepository : IContactRepository
         }
     }
 
-    public async Task<List<ResultContactDto>> GetAllContactsAsync()
+    public async Task<List<ResultContactDto>> GetAllContacts()
     {
         string query = @"Select *
                         From Contact";
@@ -66,7 +66,7 @@ public class ContactRepository : IContactRepository
         }
     }
 
-    public async void UpdateContact(UpdateContactDto contactDto)
+    public async Task UpdateContact(UpdateContactDto contactDto)
     {
         string query = @"Update Contact 
                         Set Name=@name,Subject=@subject,Email=@email,Message=@message,SendDate=@sendDate
@@ -84,7 +84,7 @@ public class ContactRepository : IContactRepository
         }
     }
 
-    public async void DeleteContact(int id)
+    public async Task DeleteContact(int id)
     {
         string query = @"Delete From Contact
                         Where ContactID = @contactID";

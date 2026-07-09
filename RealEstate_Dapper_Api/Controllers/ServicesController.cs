@@ -18,14 +18,14 @@ public class ServicesController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateService(CreateServiceDto serviceDto)
     {
-        _serviceRepository.CreateService(serviceDto);
+        await _serviceRepository.CreateService(serviceDto);
         return Ok("New Service has been created");
     }
 
     [HttpGet]
     public async Task<IActionResult> ServiceList()
     {
-        var values = await _serviceRepository.GetAllServiceAsync();
+        var values = await _serviceRepository.GetAllService();
         return Ok(values);
     }
 
@@ -39,14 +39,14 @@ public class ServicesController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateService(UpdateServiceDto serviceDto)
     {
-        _serviceRepository.UpdateService(serviceDto);
+        await _serviceRepository.UpdateService(serviceDto);
         return Ok("Service has been updated");
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteService(int id)
     {
-        _serviceRepository.DeleteService(id);
+        await _serviceRepository.DeleteService(id);
         return Ok("Service with Id = " + id + " has been deleted");
     }
 }

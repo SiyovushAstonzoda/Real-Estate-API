@@ -4,9 +4,9 @@ namespace RealEstate_Dapper_Api.Repositories.AboutRepository;
 
 public interface IAboutRepository
 {
-    void CreateAbout(CreateAboutDto aboutDto);
-    Task<List<ResultAboutDto>> GetAllAboutAsync();
+    Task CreateAbout(CreateAboutDto aboutDto);
+    Task<List<ResultAboutDto>> GetAllAbout();
     Task<GetByIDAboutDto> GetAboutByID(int id);
-    void UpdateAbout(UpdateAboutDto aboutDto);
-    void DeleteAbout(int id);
+    Task UpdateAbout(UpdateAboutDto aboutDto);
+    Task DeleteAbout(int id);
 }

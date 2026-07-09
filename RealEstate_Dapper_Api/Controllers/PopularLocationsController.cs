@@ -18,14 +18,14 @@ public class PopularLocationsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreatePopularLocation(CreatePopularLocationDto popularLocationDto)
     {
-        _popularLocationRepository.CreatePopularLocation(popularLocationDto);
+        await _popularLocationRepository.CreatePopularLocation(popularLocationDto);
         return Ok("New PopularLocation has been created");
     }
 
     [HttpGet]
     public async Task<IActionResult> PopularLocationList()
     {
-        var values = await _popularLocationRepository.GetAllPopularLocationAsync();
+        var values = await _popularLocationRepository.GetAllPopularLocation();
         return Ok(values);
     }
 
@@ -39,14 +39,14 @@ public class PopularLocationsController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdatePopularLocation(UpdatePopularLocationDto popularLocationDto)
     {
-        _popularLocationRepository.UpdatePopularLocation(popularLocationDto);
+        await _popularLocationRepository.UpdatePopularLocation(popularLocationDto);
         return Ok("PopularLocation has been updated");
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeletePopularLocation(int id)
     {
-        _popularLocationRepository.DeletePopularLocation(id);
+        await _popularLocationRepository.DeletePopularLocation(id);
         return Ok("PopularLocation with Id = " + id + " has been deleted");
     }
 }

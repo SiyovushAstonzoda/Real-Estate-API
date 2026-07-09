@@ -13,7 +13,7 @@ public class AboutRepository : IAboutRepository
         _context = context;
     }
 
-    public async void CreateAbout(CreateAboutDto aboutDto)
+    public async Task CreateAbout(CreateAboutDto aboutDto)
     {
         string query = "insert into About (Title, Subtitle, Description1, Description2) values (@title, @subtitle, @description1, @description2)";
         var parameters = new DynamicParameters();
@@ -27,7 +27,7 @@ public class AboutRepository : IAboutRepository
         }
     }
 
-    public async Task<List<ResultAboutDto>> GetAllAboutAsync()
+    public async Task<List<ResultAboutDto>> GetAllAbout()
     {
         string query = "Select * from About";
         using (var connection = _context.CreateConnection())
@@ -49,7 +49,7 @@ public class AboutRepository : IAboutRepository
         }
     }
 
-    public async void UpdateAbout(UpdateAboutDto aboutDto)
+    public async Task UpdateAbout(UpdateAboutDto aboutDto)
     {
         string query = "Update About Set Title=@title,Subtitle=@subtitle,Description1=@description1,Description2=@description2 Where AboutID=@aboutID";
         var parameters = new DynamicParameters();
@@ -64,7 +64,7 @@ public class AboutRepository : IAboutRepository
         }
     }
 
-    public async void DeleteAbout(int id)
+    public async Task DeleteAbout(int id)
     {
         string query = "Delete From About Where AboutID = @aboutID";
         var parameters = new DynamicParameters();

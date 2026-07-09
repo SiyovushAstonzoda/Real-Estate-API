@@ -18,14 +18,14 @@ public class ContactsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateContact(CreateContactDto contactDto)
     {
-        _contactRepository.CreateContact(contactDto);
+        await _contactRepository.CreateContact(contactDto);
         return Ok("New Contact has been created");
     }
 
     [HttpGet]
     public async Task<IActionResult> ContactList()
     {
-        var values = await _contactRepository.GetAllContactsAsync();
+        var values = await _contactRepository.GetAllContacts();
         return Ok(values);
     }
 
@@ -46,14 +46,14 @@ public class ContactsController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateContact(UpdateContactDto contactDto)
     {
-        _contactRepository.UpdateContact(contactDto);
+        await _contactRepository.UpdateContact(contactDto);
         return Ok("Contact has been updated");
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteContact(int id)
     {
-        _contactRepository.DeleteContact(id);
+        await _contactRepository.DeleteContact(id);
         return Ok("Contact with Id = " + id + " has been deleted");
     }
 }

@@ -19,14 +19,14 @@ public class AboutController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateAbout(CreateAboutDto aboutDto)
     {
-        _aboutRepository.CreateAbout(aboutDto);
+        await _aboutRepository.CreateAbout(aboutDto);
         return Ok("New About has been created");
     }
 
     [HttpGet]
     public async Task<IActionResult> AboutList()
     {
-        var values = await _aboutRepository.GetAllAboutAsync();
+        var values = await _aboutRepository.GetAllAbout();
         return Ok(values);
     }
 
@@ -40,14 +40,14 @@ public class AboutController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateAbout(UpdateAboutDto aboutDto)
     {
-        _aboutRepository.UpdateAbout(aboutDto);
+        await _aboutRepository.UpdateAbout(aboutDto);
         return Ok("About has been updated");
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteAbout(int id)
     {
-        _aboutRepository.DeleteAbout(id);
+        await _aboutRepository.DeleteAbout(id);
         return Ok("About with Id = " + id + " has been deleted");
     }
 }

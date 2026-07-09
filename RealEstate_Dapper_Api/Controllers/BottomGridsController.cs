@@ -18,14 +18,14 @@ public class BottomGridsController : ControllerBase
     [HttpPost]
     public async Task<IActionResult> CreateBottomGrid(CreateBottomGridDto bottomGridDto)
     {
-        _bottomGridRepository.CreateBottomGrid(bottomGridDto);
+        await _bottomGridRepository.CreateBottomGrid(bottomGridDto);
         return Ok("New BottomGrid has been created");
     }
 
     [HttpGet]
     public async Task<IActionResult> BottomGridList()
     {
-        var values = await _bottomGridRepository.GetAllBottomGridAsync();
+        var values = await _bottomGridRepository.GetAllBottomGrid();
         return Ok(values);
     }
 
@@ -39,14 +39,14 @@ public class BottomGridsController : ControllerBase
     [HttpPut]
     public async Task<IActionResult> UpdateBottomGrid(UpdateBottomGridDto bottomGridDto)
     {
-        _bottomGridRepository.UpdateBottomGrid(bottomGridDto);
+        await _bottomGridRepository.UpdateBottomGrid(bottomGridDto);
         return Ok("BottomGrid has been updated");
     }
 
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteBottomGrid(int id)
     {
-        _bottomGridRepository.DeleteBottomGrid(id);
+        await _bottomGridRepository.DeleteBottomGrid(id);
         return Ok("BottomGrid with Id = " + id + " has been deleted");
     }
 }
