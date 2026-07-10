@@ -26,7 +26,7 @@ public class ProductRepository : IProductRepository
 
     public async Task<List<ResultProductWithCategoryDto>> GetAllProductWithCategoryAsync()
     {
-        string query = @"Select ProductID, Title, Price, CoverImage, City, District, Address, Type, CategoryName, DealOfTheDay
+        string query = @"Select ProductID, Title, Price, CoverImage, City, District, Address, Type, CategoryName, DealOfTheDay, SlugUrl
                         From Product 
                         Inner Join Category On Product.ProductCategory=Category.CategoryID";
         using (var connection = _context.CreateConnection())
@@ -133,7 +133,7 @@ public class ProductRepository : IProductRepository
 
     public async Task<GetProductByIDDto> GetProductByID(int id)
     {
-        string query = @"Select ProductID, Title, Price, CoverImage, City, District, Address, Type, CategoryName, DealOfTheDay, AnnouncementDate, Description
+        string query = @"Select ProductID, Title, Price, CoverImage, City, District, Address, Type, CategoryName, DealOfTheDay, AnnouncementDate, Description, SlugUrl
                         From Product 
                         Inner Join Category On Product.ProductCategory=Category.CategoryID
                         Where ProductID = @productID";

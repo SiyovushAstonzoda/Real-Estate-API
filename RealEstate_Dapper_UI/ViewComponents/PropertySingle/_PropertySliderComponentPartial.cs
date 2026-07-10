@@ -13,10 +13,10 @@ public class _PropertySliderComponentPartial : ViewComponent
         _httpClientFactory = httpClientFactory;
     }
 
-    public async Task<IViewComponentResult> InvokeAsync()
+    public async Task<IViewComponentResult> InvokeAsync(int id)
     {
         var client = _httpClientFactory.CreateClient();
-        var responseMessage = await client.GetAsync($"http://localhost:5048/api/ProductImage/GetProductImagesByID?id=1");
+        var responseMessage = await client.GetAsync($"http://localhost:5048/api/ProductImage/GetProductImagesByID?id={id}");
         if (responseMessage.IsSuccessStatusCode)
         {
             var jsonData = await responseMessage.Content.ReadAsStringAsync();

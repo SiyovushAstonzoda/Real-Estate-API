@@ -12,4 +12,5 @@ public class ResultProductWithSearchListDto
     public string Type { get; set; }
     public string ProductCategory { get; set; }
     public bool DealOfTheDay { get; set; }
+    public string SlugUrl { get; set; }
 }

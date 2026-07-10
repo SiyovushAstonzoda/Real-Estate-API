@@ -1,7 +1,11 @@
+using System.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using RealEstate_Dapper_UI.Models;
 using RealEstate_Dapper_UI.Services;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.Configure<ApiSettings>(builder.Configuration.GetSection("ApiSettingsKey"));
 
 // Add services to the container.
 builder.Services.AddHttpClient();
@@ -39,6 +43,11 @@ app.UseRouting();
 app.UseAuthentication();
 
 app.UseAuthorization();
+
+app.MapControllerRoute(
+    name: "property",
+    pattern: "property/{slug}/{id}",
+    defaults: new { controller = "Property", action = "PropertySingle" });
 
 app.MapControllerRoute(
     name: "areas",

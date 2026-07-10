@@ -16,4 +16,5 @@ public class GetProductByIDDto
     public bool DealOfTheDay { get; set; }
     public DateTime AnnouncementDate { get; set; }
     //public bool Status { get; set; }
+    public string SlugUrl { get; set; }
 }

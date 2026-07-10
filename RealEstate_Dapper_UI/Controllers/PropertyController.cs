@@ -44,10 +44,9 @@ namespace RealEstate_Dapper_UI.Controllers
             return View();
         }
 
-        [HttpGet]
-        public async Task<IActionResult> PropertySingle(int id)
+        [HttpGet("property/{slug}/{id}")]
+        public async Task<IActionResult> PropertySingle(string slugUrl, int id)
         {
-            id = 1;
             var client = _httpClientFactory.CreateClient();
             var responseMessage1 = await client.GetAsync($"http://localhost:5048/api/Products/GetProductByID?id={id}");
             var jsonData1 = await responseMessage1.Content.ReadAsStringAsync();
@@ -57,6 +56,7 @@ namespace RealEstate_Dapper_UI.Controllers
             var jsonData2 = await responseMessage2.Content.ReadAsStringAsync();
             var values2 = JsonConvert.DeserializeObject<GetProductDetailsByIDDto>(jsonData2);
 
+            ViewBag.ProductID = values1.ProductID;
             ViewBag.ProductTitle = values1.Title;
             ViewBag.Price = values1.Price;
             ViewBag.Address = values1.Address;
@@ -76,7 +76,33 @@ namespace RealEstate_Dapper_UI.Controllers
             ViewBag.Location = values2.Location;
             ViewBag.VideoUrl = values2.VideoUrl;
 
+            string slugFromTitle = GenerateSlug(values1.Title);
+            ViewBag.SlugUrl = slugFromTitle;
+
             return View();
+        }
+
+        public string GenerateSlug(string title)
+        {
+            if (string.IsNullOrWhiteSpace(title))
+                return string.Empty;
+
+            // 1. Convert to lowercase invariant to handle culture-specific casing safely
+            title = title.ToLowerInvariant();
+
+            // 2. Replace common Turkish/special characters
+            // title = title.Replace("ı", "i").Replace("ğ", "g").Replace("ü", "u").Replace("ş", "s").Replace("ö", "o").Replace("ç", "c");
+
+            // 3. Remove all characters that are not lowercase alphanumeric, spaces, or hyphens
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"[^a-z0-9\s-]", "");
+
+            // 4. Clean up multiple spaces and hyphens into a single space
+            title = System.Text.RegularExpressions.Regex.Replace(title, @"[\s-]+", " ").Trim();
+
+            // 5. Replace the remaining single spaces with hyphens
+            title = title.Replace(" ", "-");
+
+            return title;
         }
     }
 }
