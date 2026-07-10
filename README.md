@@ -43,7 +43,7 @@ The solution contains two main projects:
 
 1. **Clone the repository:**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/SiyovushAstonzoda/Real-Estate-API.git
    ```
 
 2. **Database Configuration:**
